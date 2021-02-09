@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Code Breaker</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css"/> 
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet"> 
+</head>
+
+<body>
+    <header>
+        <h1>Code Breaker</h1>
+
+        <article class="options">
+            <!-- Amount of Numbers -->
+            <section class="amountOfNumbers">
+                <p>Numbers:</p>
+                <p id="number">3</p>
+                <div class="amountRegulator">
+                    <button type="button" class="amountUp" id="amountOfNumberbersUp"></button>
+                    <button type="button" class="amountDown" id="amountOfNumberbersDown"></button>
+                </div>
+            </section>
+
+            <!-- Start Button -->
+            <section class="startGame">
+                <button type="button" id="startGameButton" class="startGameButton active">Start</button>
+            </section>
+
+            <!-- Amount of Trys -->
+            <section class="amountOfTrys">
+                <p>Trys:</p>
+                <p id="trys">12</p>
+                <div class="amountRegulator">
+                    <button type="button" class="amountUp" id="amountOfTryssUp"></button>
+                    <button type="button" class="amountDown" id="amountOfTryssDown"></button>
+                </div>
+            </section>
+        </article>
+    </header>
+
+    <main>
+        <article class="game">
+            <!-- buttons are generated through js-->
+            <section class="gameplay">
+                <img class="sun" src="img/sun.png" alt="sun">
+                <img class="chest" src="img/chest.png" alt="treasurechest">
+                <img class="palmtree" src="img/palmtree.png" alt="palmtree">
+                <div class="sea"></div>
+            </section>
+
+            <!-- solution to not clickable buttons -->
+            <section id="numbers" class="numbers lock"></section>
+
+            <!-- <canvas id="gameplay" class="gameplay">
+            </canvas> -->
+
+            <section class="ground">
+                <p></p>
+            </section>
+
+            <section class="game-buttons">
+                <button type="button" class="guess" id="guess">Guess</button>
+                <button type="button" class="reset" id="reset">Reset</button>
+            </section>
+
+            <!-- button click -> confirmentation of reset-->
+            <article id="resetSection" class="confirmentationOfReset">
+            </article>
+
+        </article>
+
+
+    </main>
+
+    <footer>
+        <article class="result" id="result">
+            <h2>Result</h2>
+            <!-- result of the guess -->
+        </article>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type ="text/javascript" src="js/script.js"></script>
+    <script type ="text/javascript" src="js/Count.js"></script>
+</body>
+</html>

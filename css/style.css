@@ -1,0 +1,474 @@
+:root {
+    --black: rgb(0, 0, 0);
+    --dark: rgb(50, 50, 50);
+    --white: rgb(255, 255, 255);
+    --grey: rgb(230, 230, 230);
+    --metalic: rgb(204, 204, 204);
+    --darkblue: rgb(35, 10, 89);
+    --blue: rgb(62, 56, 242);
+    --middleblue: rgb(0, 41, 250);
+    --brightblue: rgb(92, 115, 242);
+    --mattblue: rgb(130, 159, 217);
+    --cyan: rgb(0, 255, 255);
+    --orange: rgb(255, 163, 77);
+    --orangeLight: rgb(252, 193, 137);
+    --orangeDark: rgb(177, 85, 0);
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-X: hidden;
+}
+
+body {
+    font-family: 'Merriweather', Arial;
+    color: var(--dark);
+}
+
+/* Header -------------------------------------*/
+/* Title */
+header {
+    background-color: var(--white);
+}
+header h1 {
+    text-align: center;
+    font-size: 3rem;
+    padding: 1rem 0;
+    color: var(--mattblue);
+    text-shadow: 
+        0 -1px 0 rgb(255, 255, 255),
+        0 1px 0 rgb(46, 46, 46),
+        0 2px 0 rgb(44, 44, 44),
+        0 3px 0 rgb(42, 42, 42),
+        0 4px 0 rgb(40, 40, 40),
+        0 5px 0 rgb(38, 38, 38),
+        0 6px 0 rgb(36, 36, 36);
+}
+
+/* option */
+.options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgb(255, 255, 185); */
+
+    background-color: rgb(0, 0, 75);
+    color: var(--grey);
+    text-shadow:0px 0px 10px var(--white), 
+                0px 0px 15px var(--white);
+
+    transform: skewY(-2deg) translate(0px, 30px);
+    height: 3rem;
+    font-size: 1.2rem;
+}
+.options section {
+    display: flex;
+}
+.options section p {
+    align-self: center;
+}
+.options section:not(:first-of-type) {
+    margin-left: 5%;
+}
+.amountOfNumbers p:nth-child(2), .amountOfTrys p:nth-child(2) {
+    margin-left: 5px;
+}
+.options section div {
+    display: flex;
+}
+
+/* up and down arrows */
+.amountRegulator {
+    flex-direction: column;
+    align-self: center;
+}
+.amountRegulator button {
+    margin-left: 5px;
+    width: 1.2rem;
+    height: 0.6rem;
+    /* background-color: rgb(255, 255, 185); */
+    background-color: var(--grey);
+    border-color: var(--mattblue);
+}
+.amountRegulator button:nth-of-type(2) {
+    margin-top: 2px;
+}
+.amountUp {
+    background-image: url("../img/uparrow.png");
+}
+.amountDown {
+    background-image: url("../img/downarrow.png");
+}
+.amountUp, .amountDown {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.hide {
+    visibility: hidden;
+}
+
+
+/* start button */
+.startGameButton {
+    width: 4rem;
+    height: 2rem;
+    background-color: var(--mattblue);
+    font-size: 1.2rem;
+    border-radius: 20px;
+    border: 1px solid black;
+    position: relative;
+}
+.startGame .active {
+    box-shadow: 0px 0px 50px var(--white);
+}
+.active:hover {
+    background-color: rgb(105, 139, 207);
+}
+.startGame .active:active {
+    transform: scale(0.9);
+}
+
+.startGame .active::after {
+    content: '';
+    width: 0px; 
+    height: 0px;
+    border-radius: 100%;
+    border: 6px solid #00FFCB;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ring 2s infinite;
+    animation-delay: 3s;
+}
+
+@keyframes ring {
+    0% {
+        width: 0px;
+        height: 0px;
+        opacity: 1;
+    }
+    100% {
+        width: 90px;
+        height: 60px;
+        opacity: 0;
+    }
+}
+
+
+/* Main -------------------------------------*/
+/* Game */
+.gameplay {
+    position: relative;
+    min-height: 60vh;
+    width: 100%;
+    background-color: rgb(238, 245, 255);
+    background: linear-gradient(to top, rgb(238, 245, 255), rgb(0, 0, 75));
+    z-index: -1;
+    /* disables selection of the pictures */
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+.sun {
+    width: 300px;
+    position: absolute;
+    top: -4px;
+    right: -150px;
+    z-index: -3;
+}
+.chest {
+    width: 300px;
+    height: 250px;
+    position: absolute;
+    bottom: -10px;
+    left: 30%;
+    -webkit-transform: translateX(-30%);
+    transform: translateX(-30%);
+    z-index: -1;
+}
+.palmtree {
+    height: 130%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    z-index: -2;
+}
+.sea {
+    position: absolute;
+    bottom: 0;
+    height: 20px;
+    width: 100%;
+    background: linear-gradient(-135deg, var(--blue) 5px, transparent 0) 0 5px, 
+                linear-gradient(135deg, var(--blue) 5px, #ffe6a3 0) 0 5px;
+    background-color: var(--blue);
+    /* background-position: left bottom; */
+    background-position: left bottom;
+    background-repeat: repeat-x;
+    background-size: 10px 10px;
+    z-index: -4;
+}
+
+/* Ground */
+.ground {
+    height: 1rem;
+    background: #ffe6a3;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #ffae85, #ffe6a3);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #ffe6a3, #ffae85); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+/* Game-Buttons | Start, Reset*/
+.game-buttons {
+    text-align: center;
+    padding: 1rem 0;
+    background: linear-gradient(to bottom, #ffaa80, var(--orange));
+}
+.game-buttons button:not(:first-child) {
+    margin-left: 15%;
+}
+.game-buttons button {
+    width: 5rem;
+    height: 2rem;
+    border-radius: 10px;
+}
+.reset, .guess {
+    opacity: 0.6;
+    color: var(--white);
+    font-weight: bolder;
+    font-size: 1rem;
+    border: none;
+    text-shadow:0px -2px 0px rgba(0,0,0,1), 
+                0 0 0.5px rgba(255,255,255,0.8),
+                0 -4px 15px rgba(255,255,255,0.5);
+    box-shadow: 2px 2px 2px rgb(39, 39, 39);
+    transition: opacity 0.5s;
+}
+.guess {
+    background-color: var(--blue);
+}
+.reset {
+    background-color: var(--darkblue);
+}
+.active {
+    opacity: 1;
+}
+.game-buttons .active:active {
+    transform: scale(0.95);
+}
+.ground, .game-buttons {
+    transform: translate(0, -5px);
+}
+
+/* game Counts */
+.numbers {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    bottom: 87px;
+    left: 30%;
+    margin-left: -9.8px;
+    -webkit-transform: translateX(55px);
+    transform: translateX(55px);
+    height: 0;
+}
+.numbers div {
+    display: flex;
+    flex-direction: column;
+}
+.numbers div:not(:first-child) {
+    margin-left: 0.2rem;
+}
+.numbers div input {
+    width: 18px;
+    text-align: center;
+}
+.numbers button {
+    min-height: 12px;
+}
+.numbers button:hover {
+    cursor: pointer;
+}
+
+.numbers div button:nth-child(1) {
+    border: none;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background-color: var(--metalic);
+    background-image: url("../img/uparrow.png");
+    background-size: 0.5rem;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.numbers div button:nth-child(3) {
+    border: none;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background-color: var(--metalic);
+    background-image: url("../img/downarrow.png");
+    background-size: 0.5rem;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.lock {
+    opacity: 0.5;
+}
+.lock button:hover {
+    cursor: default;
+}
+
+/* confirmentation of reset */
+.confirmentationOfReset {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    color: var(--white);
+    background-color: rgb(223, 175, 88); /* fallback color */
+    background: linear-gradient(to bottom, var(--orange), rgb(223, 175, 88));
+    transform: translateY(-5px);
+}
+.confirmentationOfReset button {
+    font-weight: bolder;
+    width: 4rem;
+    height: 1.8rem;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0px -2px 0px rgba(0,0,0,1),0 -4px 15px rgba(255,255,255,0.5);
+}
+.confirmentationOfReset button:not(:first-child) {
+    margin-left: 20px;
+}
+.confirmentationOfReset button:first-of-type {
+    background-color: rgb(173, 255, 47);
+}
+.confirmentationOfReset button:last-of-type {
+    background-color: rgb(255, 0, 0);
+}
+.confirmentationOfReset button:active {
+    transform: scale(0.9);
+}
+.confirmentationOfReset p {
+    margin-right: 2rem;
+}
+
+/* result */
+.result {
+    text-align: center;
+    color: var(--orangeDark);
+    margin-top: 1rem;
+    margin-bottom: 5rem;
+    font-size: 1.5rem;
+}
+.result div {
+    display: flex;
+    justify-content: center;
+}
+.result p:not(:first-of-type) {
+    margin-left: 0.5rem;
+}
+.result .right {
+    color: green;
+}
+.result .inNumbers {
+    color: orange;
+}
+.result .wrong {
+    color: red;
+}
+
+/* wide-screen */
+@media (min-width: 700px) {
+    /* option */
+    .options {
+        transform: skewY(-1deg) translate(0px, 20px);
+    }
+    /* game */
+    .sun {
+        width: 300px;
+        position: absolute;
+        top: -4px;
+        right: -150px;
+        z-index: -3;
+    }
+    .chest {
+        width: 500px;
+        height: 300px;
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+        z-index: -1;
+    }
+    .palmtree {
+        height: 130%;
+        position: absolute;
+        bottom: 0;
+        left: 70%;
+        -webkit-transform: translateX(-70%);
+        transform: translateX(-70%);
+        z-index: -2;
+    }
+    
+    /* game Counts */
+    .numbers {
+        position: relative;
+        bottom: 103px;
+        left: 50%;
+        margin-left: -9.8px;
+        -webkit-transform: translateX(-10px);
+        transform: translateX(-10px);
+    }
+
+}
+/* big screen */
+@media (min-width: 2000px) {
+    /* game */
+    .sun {
+        width: 800px;
+        position: absolute;
+        top: -15px;
+        right: -450px;
+        z-index: -3;
+    }
+    .chest {
+        width: 550px;
+        height: 300px;
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+        z-index: -1;
+    }
+    .palmtree {
+        height: 130%;
+        position: absolute;
+        bottom: 0;
+        left: 65%;
+        -webkit-transform: translateX(-65%);
+        transform: translateX(-65%);
+        z-index: -2;
+    }
+
+    /* game Counts */
+    .numbers {
+        position: relative;
+        bottom: 98px;
+        left: 50%;
+        margin-left: -9.8px;
+        -webkit-transform: translateX(-14px);
+        transform: translateX(-14px);
+    }
+}
